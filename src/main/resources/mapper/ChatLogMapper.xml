@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yykj.oachat.dao.ChatLogMapper" >
+  <resultMap id="BaseResultMap" type="com.yykj.oachat.entity.ChatLog" >
+    <constructor >
+      <idArg column="id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="sender_id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="receiver_id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="content" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="content_type" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="send_time" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="already_read" jdbcType="BIT" javaType="java.lang.Boolean" />
+      <arg column="already_received" jdbcType="BIT" javaType="java.lang.Boolean" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, sender_id, receiver_id, content, content_type, send_time, already_read, already_received
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from chat_log
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from chat_log
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yykj.oachat.entity.ChatLog" >
+    insert into chat_log (id, sender_id, receiver_id, 
+      content, content_type, send_time, 
+      already_read, already_received)
+    values (#{id,jdbcType=BIGINT}, #{senderId,jdbcType=BIGINT}, #{receiverId,jdbcType=BIGINT}, 
+      #{content,jdbcType=VARCHAR}, #{contentType,jdbcType=INTEGER}, #{sendTime,jdbcType=BIGINT}, 
+      #{alreadyRead,jdbcType=BIT}, #{alreadyReceived,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yykj.oachat.entity.ChatLog" >
+    insert into chat_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="senderId != null" >
+        sender_id,
+      </if>
+      <if test="receiverId != null" >
+        receiver_id,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="contentType != null" >
+        content_type,
+      </if>
+      <if test="sendTime != null" >
+        send_time,
+      </if>
+      <if test="alreadyRead != null" >
+        already_read,
+      </if>
+      <if test="alreadyReceived != null" >
+        already_received,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="senderId != null" >
+        #{senderId,jdbcType=BIGINT},
+      </if>
+      <if test="receiverId != null" >
+        #{receiverId,jdbcType=BIGINT},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="contentType != null" >
+        #{contentType,jdbcType=INTEGER},
+      </if>
+      <if test="sendTime != null" >
+        #{sendTime,jdbcType=BIGINT},
+      </if>
+      <if test="alreadyRead != null" >
+        #{alreadyRead,jdbcType=BIT},
+      </if>
+      <if test="alreadyReceived != null" >
+        #{alreadyReceived,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yykj.oachat.entity.ChatLog" >
+    update chat_log
+    <set >
+      <if test="senderId != null" >
+        sender_id = #{senderId,jdbcType=BIGINT},
+      </if>
+      <if test="receiverId != null" >
+        receiver_id = #{receiverId,jdbcType=BIGINT},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="contentType != null" >
+        content_type = #{contentType,jdbcType=INTEGER},
+      </if>
+      <if test="sendTime != null" >
+        send_time = #{sendTime,jdbcType=BIGINT},
+      </if>
+      <if test="alreadyRead != null" >
+        already_read = #{alreadyRead,jdbcType=BIT},
+      </if>
+      <if test="alreadyReceived != null" >
+        already_received = #{alreadyReceived,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yykj.oachat.entity.ChatLog" >
+    update chat_log
+    set sender_id = #{senderId,jdbcType=BIGINT},
+      receiver_id = #{receiverId,jdbcType=BIGINT},
+      content = #{content,jdbcType=VARCHAR},
+      content_type = #{contentType,jdbcType=INTEGER},
+      send_time = #{sendTime,jdbcType=BIGINT},
+      already_read = #{alreadyRead,jdbcType=BIT},
+      already_received = #{alreadyReceived,jdbcType=BIT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="listBySelfIdAndFriendId" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"/> from chat_log
+    where (sender_id=#{selfId} and receiver_id=#{friendId}) or (sender_id=#{friendId} and receiver_id=#{selfId})
+    order send_time by asc
+  </select>
+
+  <select id="countUnReadBySelfIdAndFriendId" resultType="int">
+    select COUNT(1) from  chat_log
+    where `read` = 0 and
+     (sender_id=#{friendId} and receiver_id=#{selfId})
+
+  </select>
+
+  <update id="updateReadStatusByReceiverId">
+    update chat_log set already_read = 1 where receiver_id=#{receiverId};
+  </update>
+</mapper>

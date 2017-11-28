@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yykj.oachat.dao.FriendRequestMapper" >
+  <resultMap id="BaseResultMap" type="com.yykj.oachat.entity.FriendRequest" >
+    <constructor >
+      <idArg column="id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="from_user_id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="to_user_id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="send_time" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="accepted" jdbcType="BIT" javaType="java.lang.Boolean" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, from_user_id, to_user_id, send_time, accepted
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from friend_request
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from friend_request
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yykj.oachat.entity.FriendRequest" >
+    insert into friend_request (id, from_user_id, to_user_id, 
+      send_time, accepted)
+    values (#{id,jdbcType=BIGINT}, #{fromUserId,jdbcType=BIGINT}, #{toUserId,jdbcType=BIGINT}, 
+      #{sendTime,jdbcType=BIGINT}, #{accepted,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yykj.oachat.entity.FriendRequest" >
+    insert into friend_request
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="fromUserId != null" >
+        from_user_id,
+      </if>
+      <if test="toUserId != null" >
+        to_user_id,
+      </if>
+      <if test="sendTime != null" >
+        send_time,
+      </if>
+      <if test="accepted != null" >
+        accepted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="fromUserId != null" >
+        #{fromUserId,jdbcType=BIGINT},
+      </if>
+      <if test="toUserId != null" >
+        #{toUserId,jdbcType=BIGINT},
+      </if>
+      <if test="sendTime != null" >
+        #{sendTime,jdbcType=BIGINT},
+      </if>
+      <if test="accepted != null" >
+        #{accepted,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yykj.oachat.entity.FriendRequest" >
+    update friend_request
+    <set >
+      <if test="fromUserId != null" >
+        from_user_id = #{fromUserId,jdbcType=BIGINT},
+      </if>
+      <if test="toUserId != null" >
+        to_user_id = #{toUserId,jdbcType=BIGINT},
+      </if>
+      <if test="sendTime != null" >
+        send_time = #{sendTime,jdbcType=BIGINT},
+      </if>
+      <if test="accepted != null" >
+        accepted = #{accepted,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yykj.oachat.entity.FriendRequest" >
+    update friend_request
+    set from_user_id = #{fromUserId,jdbcType=BIGINT},
+      to_user_id = #{toUserId,jdbcType=BIGINT},
+      send_time = #{sendTime,jdbcType=BIGINT},
+      accepted = #{accepted,jdbcType=BIT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="listByToId" resultType="com.yykj.oachat.entity.FriendRequest">
+    select
+     <include refid="Base_Column_List"/>
+     from friend_request where to_id=#{toId};
+  </select>
+  
+  <update id="updateAcceptedByFromIdAndToId">
+    update friend_request set accepted = 1 where from_id=#{fromId} and to_id=#{toId};
+  </update>
+</mapper>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yykj.oachat.dao.FriendMapper" >
+  <resultMap id="BaseResultMap" type="com.yykj.oachat.entity.Friend" >
+    <constructor >
+      <idArg column="id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="user1_id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="user2_id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="create_time" jdbcType="BIGINT" javaType="java.lang.Long" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user1_id, user2_id, create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from friend
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from friend
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yykj.oachat.entity.Friend" >
+    insert into friend (id, user1_id, user2_id, 
+      create_time)
+    values (#{id,jdbcType=BIGINT}, #{user1Id,jdbcType=BIGINT}, #{user2Id,jdbcType=BIGINT}, 
+      #{createTime,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yykj.oachat.entity.Friend" >
+    insert into friend
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="user1Id != null" >
+        user1_id,
+      </if>
+      <if test="user2Id != null" >
+        user2_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="user1Id != null" >
+        #{user1Id,jdbcType=BIGINT},
+      </if>
+      <if test="user2Id != null" >
+        #{user2Id,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yykj.oachat.entity.Friend" >
+    update friend
+    <set >
+      <if test="user1Id != null" >
+        user1_id = #{user1Id,jdbcType=BIGINT},
+      </if>
+      <if test="user2Id != null" >
+        user2_id = #{user2Id,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yykj.oachat.entity.Friend" >
+    update friend
+    set user1_id = #{user1Id,jdbcType=BIGINT},
+      user2_id = #{user2Id,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="listFriendIdUserId" resultType="long">
+      select user1_id from friend where user2_id=#{userId}
+      union
+      select user2_id from friend where user1_id=#{userId}
+  </select>
+
+  <select id="checkRelationship" resultType="int">
+    select COUNT(1)
+    from friend
+     where (user1_id=#{selfId} and user2_id=#{userId})
+     or (user1_id=#{userId} and user2_id=#{selfId})
+  </select>
+</mapper>

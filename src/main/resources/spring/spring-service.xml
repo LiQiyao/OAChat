@@ -9,7 +9,6 @@
        http://www.springframework.org/schema/context/spring-context.xsd
        http://www.springframework.org/schema/tx
        http://www.springframework.org/schema/tx/spring-tx.xsd">
-    <context:component-scan base-package="edu.zust.survey.service"/>
+    <context:component-scan base-package="com.yykj.oachat.service"/>
     <import resource="classpath:spring/spring-dao.xml"/>
-    <bean id="questionnaireCache" class="edu.zust.survey.common.QuestionnaireCache"/>
 </beans>

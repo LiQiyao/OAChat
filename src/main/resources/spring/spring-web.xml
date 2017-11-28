@@ -10,9 +10,9 @@
         <property name="prefix" value="/WEB-INF/jsp/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
-    <context:component-scan base-package="edu.zust.survey.controller"/>
+    <context:component-scan base-package="com.yykj.oachat.controller"/>
     <mvc:interceptors>
-        <bean class="edu.zust.survey.interceptor.AllInterceptor"/>
+        <bean class="com.yykj.oachat.interceptor.AllInterceptor"/>
 <!--        <mvc:interceptor>
             <mvc:mapping path="/admin/**/*"/>
             <bean class="edu.zust.survey.interceptor.ManagerInterceptor"/>

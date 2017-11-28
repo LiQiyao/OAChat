@@ -1,0 +1,194 @@
+Message{
+	dataName:data的名字
+	status:1成功，0失败
+	statusDetails:
+	sign:请求1/响应2/通知3
+	data:是个泛型
+	userId:
+	token:
+}
+1.用户注册 HTTP POST
+请求：
+username=xxx&nickName=xxx&gender=xxx&password=xx
+响应：
+Message{
+	dataName:null
+	status:1成功，0失败
+	statusDetails:注册成功/失败
+	sign:响应
+	data:null
+	userId:
+	token:
+}
+
+2.用户登录 HTTP POST
+请求：
+username=xxx&password=xxx
+响应：
+Message{
+	dataName:loginResult
+	status:0成功，1失败
+	statusDetails:登录成功/失败
+	sign:响应
+	data:loginResult
+	userId:
+	token:
+}
+LoginResultVo{
+	selfUser:
+	friendlist:[
+		User:{
+			id:
+			username:
+			nickName:
+			gender:
+			address:
+			telephoneNumber:
+			icon:
+		}...
+	]
+	LinkedHashMap<userId, chatLogListVo> 
+	chatLogListVo:{
+		read:0(代表消息未读，需要用红点提示用户)
+		chatLog:{
+					senderId:
+					recevierId:
+					content:
+					type:
+					sendTime:
+					read:
+				}..	
+	}
+}
+消息已读未读，每次一登录要把未收到消息发过去
+2.读消息，用户打开未读消息的聊天窗口后，触发事件，向服务器发HTTP
+token=xxx&userId=xxx&senderId=xxx
+3.查找用户 HTTP
+请求：
+token=xxx&userId=xxx&key=xxx
+响应：
+Message{
+	dataName:foundUsers
+	status:1成功/0失败
+	statusDetails:查找成功/失败
+	sign:响应
+	data:foundUsers
+	userId:
+	token:
+}
+foundUsers{
+	 count:
+	 userList[
+		User{
+			id:
+			username:
+			nickName:
+			gender:
+			address:
+			telephoneNumber:
+			icon:
+		}...
+	 ]
+}
+7.修改个人信息 HTTP POST
+请求：
+token=xxx&userId=1&nickName=xxx&gender=男//键值对 
+响应：
+Message{
+	dataName:null
+	status:0成功，1失败
+	statusDetails:修改成功/失败
+	sign:响应
+	data:null
+	userId:
+	token:
+}
+8.更改头像 客户端->FTP  url通过HTTP传到服务端
+请求：
+token=xxx&userId=1&icon=ftp://
+响应：
+Message{
+	dataName:null
+	status:1成功，0失败
+	statusDetails:更改成功/失败
+	sign:响应
+	data:null
+	userId:
+	token:
+}
+3.发送/接收聊天消息 TCP user->服务器->user socket
+Message{
+	dataName:chatLog
+	status:0成功，1失败
+	statusDetails:成功/失败
+	sign:请求
+	data:chatLog
+	userId:
+	token:
+}
+ChatLog{  
+		senderId:
+		recevierId:
+		content:
+		type:1(文本消息) 2(图片) 3(文件)
+		sendTime:
+		read:
+}
+4.发送添加好友请求 TCP  fromUser->服务器->toUser
+Message{
+	dataName:addFriendRequestVo
+	status:
+	statusDetails:
+	sign:请求
+	data:addFriendRequestVo
+	token:
+	userId:
+}
+AddFriendRequestVo{
+		fromUserId:
+		fromUsername:
+		fromNickName:
+		fromIcon:
+		fromGender:
+		toUserId:
+		sendTime:	
+}
+5.回复好友请求 TCP  toUser->服务器
+Message{
+	dataName:addFriendResponseVo
+	status:
+	statusDetails:
+	sign:请求
+	data:addFriendResponseVo
+	token:
+	userId:
+}	
+AddFriendResponseVo{
+		fromUserId:
+		toUserId:
+		accepted:1(接收) 0(拒绝)
+}
+6.添加好友成功 TCP  服务器->user
+Message{
+	dataName:addFriendSuccessVo
+	status:
+	statusDetails:
+	sign:通知
+	data:addFriendResponseVo
+	token:
+	userId:
+}
+AddFriendSuccessVo{
+		addUserId:
+		addUsername:
+		addNickName:
+		addGender:
+		addAddress:
+		addTelephoneNumber:
+		addIcon:
+}
+6.删除好友
+
+
+
+
