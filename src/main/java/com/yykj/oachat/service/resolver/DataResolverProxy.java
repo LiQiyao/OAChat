@@ -1,5 +1,9 @@
 package com.yykj.oachat.service.resolver;
 
+import com.google.gson.Gson;
+import com.yykj.oachat.dto.MessageDTO;
+import com.yykj.oachat.util.GsonUtil;
+import io.netty.channel.Channel;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -18,7 +22,12 @@ public class DataResolverProxy implements ApplicationContextAware{
         this.applicationContext = applicationContext;
     }
 
-    public void doAction(String jsonMessage){
-
+    public void doAction(String jsonMessage, Channel channel){
+        MessageDTO messageDTO = GsonUtil.getInstance().fromJson(jsonMessage, MessageDTO.class);
+        String dataName = messageDTO.getDataName();
+        DataResolver dataResolver = (DataResolver)applicationContext.getBean(dataName + "Resolver");
+        if (dataResolver != null){
+            dataResolver.resolve(jsonMessage, channel);
+        }
     }
 }
