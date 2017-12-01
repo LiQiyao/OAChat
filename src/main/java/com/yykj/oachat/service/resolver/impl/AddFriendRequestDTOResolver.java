@@ -19,7 +19,7 @@ import java.util.Date;
  * @author Lee
  * @date 2017/11/29
  */
-public class AddFriendRequestResolver implements DataResolver {
+public class AddFriendRequestDTOResolver implements DataResolver {
 
     @Autowired
     private ConnectionPool connectionPool;

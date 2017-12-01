@@ -22,5 +22,5 @@ public class Const {
         int NOTICE = 3;
     }
 
-    public static final int PORT = 8621;
+    public static final int PORT = 52621;
 }

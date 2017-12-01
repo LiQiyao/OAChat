@@ -22,6 +22,7 @@ public class TCPServer {
     }
 
     private void bind(){
+
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workGroup = new NioEventLoopGroup();
 
