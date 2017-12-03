@@ -14,7 +14,7 @@
     </constructor>
   </resultMap>
   <sql id="Base_Column_List" >
-    id, username, nick_name, gender, address, telephone_number, icon
+    id, username, password,nick_name, gender, address, telephone_number, icon
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
@@ -128,13 +128,13 @@
     where id = #{id,jdbcType=BIGINT}
   </update>
 
-  <select id="getByUsernameAndPassword" resultMap="BaseResultMap">
+  <select id="getByUsernameAndPassword" resultType="com.yykj.oachat.entity.UserInfo">
     select
     <include refid="Base_Column_List"/>
     from user_info where username=#{username} and password=#{password}
   </select>
 
-  <select id="listFriendByUserId" resultType="com.yykj.oachat.entity.UserInfocom.yykj.oachat.entity.UserInfo">
+  <select id="listFriendByUserId" resultType="com.yykj.oachat.entity.UserInfo">
     select
     u.id, u.username, u.nick_name, u.gender, u.address, u.telephone_number, u.icon
     from user_info as u, friend as f where (f.user1_id=#{userId} and u.id=f.user2_id) or (f.user2_id=#{userId} and u.id=f.user1_id)

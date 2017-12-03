@@ -2,13 +2,18 @@ package com.yykj.oachat.service.resolver.impl;
 
 import com.google.gson.reflect.TypeToken;
 import com.yykj.oachat.common.Const;
+import com.yykj.oachat.common.GenericBuilder;
 import com.yykj.oachat.common.TokenPool;
 import com.yykj.oachat.dto.MessageDTO;
+import com.yykj.oachat.dto.data.LoginResultDTO;
 import com.yykj.oachat.dto.data.OnlineDTO;
+import com.yykj.oachat.service.IUserInfoService;
 import com.yykj.oachat.service.resolver.DataResolver;
 import com.yykj.oachat.tcpconnection.ConnectionPool;
 import com.yykj.oachat.util.GsonUtil;
+import io.netty.buffer.Unpooled;
 import io.netty.channel.Channel;
+import io.netty.util.CharsetUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,11 +31,14 @@ public class OnlineDTOResolver implements DataResolver {
     @Autowired
     private ConnectionPool connectionPool;
 
-    @Autowired
     private Logger logger = LoggerFactory.getLogger(OnlineDTOResolver.class);
+
+    @Autowired
+    private IUserInfoService userInfoService;
 
     @Override
     public void resolve(String jsonMessage, Channel channel) {
+        logger.info("收到" +  jsonMessage);
         Type objectType = new TypeToken<MessageDTO<OnlineDTO>>(){}.getType();
         MessageDTO<OnlineDTO> message = GsonUtil.getInstance().fromJson(jsonMessage, objectType);
         connectionPool.addChannel(message.getUserId(), channel);
@@ -38,11 +46,20 @@ public class OnlineDTOResolver implements DataResolver {
         message.setSign(Const.Sign.RESPONSE);
         if (TokenPool.checkToken(message.getToken())){
             logger.info("id为" + message.getUserId() + "上线");
-            message.setStatus(Const.Status.SUCCESS);
-            channel.writeAndFlush(message);
+            String sentMsgJson = GsonUtil.getInstance().toJson(userInfoService.getAllInformation(message.getUserId()));
+            logger.info("sentMessage" + sentMsgJson);
+            channel.writeAndFlush(
+                    Unpooled.copiedBuffer(sentMsgJson, CharsetUtil.UTF_8)
+            );
+            channel.flush();
         } else {
             message.setStatus(Const.Status.FAILED);
-            channel.writeAndFlush(message);
+            channel.writeAndFlush(GenericBuilder.of(MessageDTO::new)
+                    .with(MessageDTO::setStatus, Const.Status.FAILED)
+                    .with(MessageDTO::setDataName, "loginResultDTO")
+                    .with(MessageDTO::setSign, Const.Sign.RESPONSE)
+                    .with(MessageDTO::setStatusDetail, "登录信息已过期")
+                    .build());
             logger.info("id为" + message.getUserId() + "上线失败！");
             channel.close();
         }

@@ -15,7 +15,9 @@ import java.util.List;
  */
 public interface IUserInfoService {
 
-    MessageDTO<LoginResultDTO> verify(String username, String password);
+    MessageDTO verify(String username, String password);
+
+    MessageDTO<LoginResultDTO> getAllInformation(Long selfId);
 
     MessageDTO<UserDetailDTO> getUserDetail(Long userId, Long selfId);
 

@@ -11,6 +11,7 @@ import io.netty.buffer.Unpooled;
 import io.netty.channel.Channel;
 import io.netty.util.CharsetUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Type;
 import java.util.Date;
@@ -19,6 +20,7 @@ import java.util.Date;
  * @author Lee
  * @date 2017/11/29
  */
+@Service
 public class AddFriendRequestDTOResolver implements DataResolver {
 
     @Autowired

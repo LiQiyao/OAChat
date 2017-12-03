@@ -8,11 +8,13 @@ import com.yykj.oachat.entity.Friend;
 import com.yykj.oachat.entity.FriendRequest;
 import com.yykj.oachat.service.IFriendService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by Lee on 2017/11/27.
  */
+@Service
 public class FriendServiceImpl implements IFriendService {
 
     @Autowired

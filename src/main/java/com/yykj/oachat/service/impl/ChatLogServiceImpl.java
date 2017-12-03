@@ -11,12 +11,14 @@ import com.yykj.oachat.dto.data.UserDetailDTO;
 import com.yykj.oachat.entity.ChatLog;
 import com.yykj.oachat.service.IChatLogService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.*;
 
 /**
  * Created by Lee on 2017/11/27.
  */
+@Service
 public class ChatLogServiceImpl implements IChatLogService {
 
     @Autowired

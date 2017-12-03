@@ -9,6 +9,7 @@ import com.yykj.oachat.entity.FriendRequest;
 import com.yykj.oachat.entity.UserInfo;
 import com.yykj.oachat.service.IFriendRequestService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -16,6 +17,7 @@ import java.util.List;
  * @author Lee
  * @date 2017/11/28
  */
+@Service
 public class FriendRequestServiceImpl implements IFriendRequestService {
 
     @Autowired

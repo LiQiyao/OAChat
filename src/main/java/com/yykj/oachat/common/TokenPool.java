@@ -1,5 +1,7 @@
 package com.yykj.oachat.common;
 
+import com.google.common.collect.Sets;
+
 import java.util.concurrent.CopyOnWriteArraySet;
 
 /**
@@ -8,7 +10,7 @@ import java.util.concurrent.CopyOnWriteArraySet;
  */
 public class TokenPool {
 
-    private static CopyOnWriteArraySet<String> tokenSet;
+    private static CopyOnWriteArraySet<String> tokenSet = Sets.newCopyOnWriteArraySet();
 
     private TokenPool(){}
 

@@ -2,6 +2,7 @@ package com.yykj.oachat.tcpconnection;
 
 import com.yykj.oachat.service.resolver.DataResolverProxy;
 import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import org.slf4j.Logger;
@@ -13,7 +14,8 @@ import org.springframework.stereotype.Component;
  * @author Lee
  * @date 2017/11/30
  */
-
+@Component
+@ChannelHandler.Sharable
 public class ServerHandler extends ChannelInboundHandlerAdapter {
 
     private static Logger logger = LoggerFactory.getLogger(ServerHandler.class);
@@ -40,9 +42,9 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
         ByteBuf byteBuf = (ByteBuf) msg;
         byte[] req = new byte[byteBuf.readableBytes()];
         byteBuf.readBytes(req);
-        String messageString = byteBuf.toString();
+        String messageString = new String(req);
         logger.info("收到消息：" + messageString);
-        dataResolverProxy.doAction(messageString);
+        dataResolverProxy.doAction(messageString, ctx.channel());
     }
 
     @Override
@@ -54,6 +56,6 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
         connectionPool.removeChannel(ctx.channel());
         ctx.close();
-        logger.info(cause.getMessage());
+        logger.error(cause.getMessage());
     }
 }

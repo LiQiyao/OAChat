@@ -131,12 +131,12 @@
   <select id="listBySelfIdAndFriendId" resultMap="BaseResultMap">
     select <include refid="Base_Column_List"/> from chat_log
     where (sender_id=#{selfId} and receiver_id=#{friendId}) or (sender_id=#{friendId} and receiver_id=#{selfId})
-    order send_time by asc
+    order by send_time  asc
   </select>
 
   <select id="countUnReadBySelfIdAndFriendId" resultType="int">
     select COUNT(1) from  chat_log
-    where `read` = 0 and
+    where `already_read` = 0 and
      (sender_id=#{friendId} and receiver_id=#{selfId})
 
   </select>

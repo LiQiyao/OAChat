@@ -14,8 +14,10 @@ import com.yykj.oachat.dto.data.UserDetailDTO;
 import com.yykj.oachat.entity.UserInfo;
 import com.yykj.oachat.service.IChatLogService;
 import com.yykj.oachat.service.IUserInfoService;
+import com.yykj.oachat.util.GsonUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.LinkedHashMap;
@@ -25,6 +27,7 @@ import java.util.Map;
 /**
  * Created by Lee on 2017/11/27.
  */
+@Service
 public class UserInfoServiceImpl implements IUserInfoService {
 
     @Autowired
@@ -37,20 +40,31 @@ public class UserInfoServiceImpl implements IUserInfoService {
     private IChatLogService chatLogService;
 
     @Override
-    public MessageDTO<LoginResultDTO> verify(String username, String password) {
+    public MessageDTO verify(String username, String password) {
         UserInfo self = userInfoMapper.getByUsernameAndPassword(username, password);
         if (self == null){
-            return GenericBuilder.of(MessageDTO<LoginResultDTO>::new)
-                    .with(MessageDTO::setDataName, "loginResultDTO")
+            return GenericBuilder.of(MessageDTO::new)
                     .with(MessageDTO::setStatus, Const.Status.FAILED)
                     .build();
         }
-        List<UserInfo> rawFriendList = userInfoMapper.listFriendByUserId(self.getId());
+        MessageDTO messageDTO =  GenericBuilder.of(MessageDTO::new)
+                .with(MessageDTO::setStatus, Const.Status.SUCCESS)
+                .with(MessageDTO::setToken, TokenFactory.generate())
+                .with(MessageDTO::setUserId, self.getId())
+                .build();
+        System.out.println(GsonUtil.getInstance().toJson(messageDTO));
+        return messageDTO;
+    }
+
+    @Override
+    public MessageDTO<LoginResultDTO> getAllInformation(Long selfId) {
+        UserInfo self = userInfoMapper.selectByPrimaryKey(selfId);
+        List<UserInfo> rawFriendList = userInfoMapper.listFriendByUserId(selfId);
         List<UserDetailDTO> friendList  = Lists.newArrayList();
         for (UserInfo userInfo : rawFriendList){
-            friendList.add(assembleUserDetail(userInfo, self.getId()));
+            friendList.add(assembleUserDetail(userInfo, selfId));
         }
-        Map<Long, ChatLogListDTO> chatLogMap = chatLogService.getChatLogMap(self.getId());
+        Map<Long, ChatLogListDTO> chatLogMap = chatLogService.getChatLogMap(selfId);
         LoginResultDTO loginResultDTO = GenericBuilder.of(LoginResultDTO::new)
                 .with(LoginResultDTO::setSelf, self)
                 .with(LoginResultDTO::setFriendList, friendList)
@@ -61,9 +75,10 @@ public class UserInfoServiceImpl implements IUserInfoService {
                 .with(MessageDTO::setData, loginResultDTO)
                 .with(MessageDTO::setDataName, "loginResultDTO")
                 .with(MessageDTO::setToken, TokenFactory.generate())
-                .with(MessageDTO::setUserId, self.getId())
+                .with(MessageDTO::setUserId, selfId)
                 .build();
     }
+
 
     @Override
     public MessageDTO<UserDetailDTO> getUserDetail(Long userId, Long selfId) {
