@@ -61,10 +61,15 @@ public class UserInfoServiceImpl implements IUserInfoService {
         UserInfo self = userInfoMapper.selectByPrimaryKey(selfId);
         List<UserInfo> rawFriendList = userInfoMapper.listFriendByUserId(selfId);
         List<UserDetailDTO> friendList  = Lists.newArrayList();
+        Map<Long, ChatLogListDTO> chatLogMap = chatLogService.getChatLogMap(selfId);
+        ChatLogListDTO chatLogListDTO;
         for (UserInfo userInfo : rawFriendList){
             friendList.add(assembleUserDetail(userInfo, selfId));
+            chatLogListDTO = chatLogMap.get(userInfo.getId());
+            chatLogListDTO.setFriendUsername(userInfo.getUsername());
+            chatLogListDTO.setFriendIcon(userInfo.getIcon());
+            chatLogListDTO.setFriendNickName(userInfo.getNickName());
         }
-        Map<Long, ChatLogListDTO> chatLogMap = chatLogService.getChatLogMap(selfId);
         LoginResultDTO loginResultDTO = GenericBuilder.of(LoginResultDTO::new)
                 .with(LoginResultDTO::setSelf, self)
                 .with(LoginResultDTO::setFriendList, friendList)

@@ -46,20 +46,16 @@ public class OnlineDTOResolver implements DataResolver {
         message.setSign(Const.Sign.RESPONSE);
         if (TokenPool.checkToken(message.getToken())){
             logger.info("id为" + message.getUserId() + "上线");
-            String sentMsgJson = GsonUtil.getInstance().toJson(userInfoService.getAllInformation(message.getUserId()));
+            //String sentMsgJson = GsonUtil.getInstance().toJson(userInfoService.getAllInformation(message.getUserId()));
+            message.setStatus(Const.Status.SUCCESS);
+            String sentMsgJson = GsonUtil.getInstance().toJson(message);
             logger.info("sentMessage" + sentMsgJson);
             channel.writeAndFlush(
                     Unpooled.copiedBuffer(sentMsgJson, CharsetUtil.UTF_8)
             );
-            channel.flush();
         } else {
             message.setStatus(Const.Status.FAILED);
-            channel.writeAndFlush(GenericBuilder.of(MessageDTO::new)
-                    .with(MessageDTO::setStatus, Const.Status.FAILED)
-                    .with(MessageDTO::setDataName, "loginResultDTO")
-                    .with(MessageDTO::setSign, Const.Sign.RESPONSE)
-                    .with(MessageDTO::setStatusDetail, "登录信息已过期")
-                    .build());
+            channel.writeAndFlush(Unpooled.copiedBuffer(GsonUtil.getInstance().toJson(message), CharsetUtil.UTF_8));
             logger.info("id为" + message.getUserId() + "上线失败！");
             channel.close();
         }

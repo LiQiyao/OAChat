@@ -10,6 +10,7 @@ import com.yykj.oachat.dto.data.ChatLogListDTO;
 import com.yykj.oachat.dto.data.UserDetailDTO;
 import com.yykj.oachat.entity.ChatLog;
 import com.yykj.oachat.service.IChatLogService;
+import com.yykj.oachat.util.GsonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,6 +41,7 @@ public class ChatLogServiceImpl implements IChatLogService {
         List<ChatLog> chatLogs = chatLogMapper.listBySelfIdAndFriendId(selfId, friendId);
         int unReadChatLogCount = chatLogMapper.countUnReadBySelfIdAndFriendId(selfId, friendId);
         return GenericBuilder.of(ChatLogListDTO::new)
+                .with(ChatLogListDTO::setFriendId, friendId)
                 .with(ChatLogListDTO::setChatLogs, chatLogs)
                 .with(ChatLogListDTO::setLastChatLogTime, chatLogs.get(chatLogs.size() - 1).getSendTime())
                 .with(ChatLogListDTO::setRead, unReadChatLogCount > 0)
@@ -53,6 +55,7 @@ public class ChatLogServiceImpl implements IChatLogService {
         for (Long friendId : allFriendIds){
             base.put(friendId, assembleChatLogListDTO(userId, friendId));
         }
+        System.out.println(GsonUtil.getInstance().toJson(base));
         Map<Long, ChatLogListDTO> chatLogMap = new TreeMap<>(new MapValueComparator(base));
         chatLogMap.putAll(base);
         return chatLogMap;

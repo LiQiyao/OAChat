@@ -20,7 +20,10 @@ public class MapValueComparator implements Comparator<Long> {
     @Override
     public int compare(Long o1, Long o2) {
 
-        if (base.get(o1).getLastChatLogTime() >= base.get(o2).getLastChatLogTime()){
+        if (o1.equals(o2)){
+            return 0;
+        }
+        if (base.get(o1).getLastChatLogTime() > base.get(o2).getLastChatLogTime()){
             return -1;
         } else {
             return 1;

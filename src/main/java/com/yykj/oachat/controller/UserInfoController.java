@@ -48,6 +48,13 @@ public class UserInfoController {
         return userInfoService.findUsersByKey(key, userId);
     }
 
+    @RequestMapping(value = "allInformation", method = RequestMethod.GET)
+    @ResponseBody
+    public MessageDTO getAllInformation(Long selfId, String token){
+        System.out.println("!!!" + selfId + token);
+        return userInfoService.getAllInformation(selfId);
+    }
+
     @RequestMapping(value = "detail/{targetId}", method = RequestMethod.GET)
     @ResponseBody
     public MessageDTO getDetail(@PathVariable Long targetId, String token, Long userId){

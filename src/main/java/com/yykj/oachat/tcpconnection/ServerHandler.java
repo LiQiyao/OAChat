@@ -5,6 +5,7 @@ import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
+import org.apache.commons.codec.binary.Base64;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,9 +43,12 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
         ByteBuf byteBuf = (ByteBuf) msg;
         byte[] req = new byte[byteBuf.readableBytes()];
         byteBuf.readBytes(req);
-        String messageString = new String(req);
-        logger.info("收到消息：" + messageString);
-        dataResolverProxy.doAction(messageString, ctx.channel());
+
+        //req = Base64.decodeBase64(req);
+
+        String messageString = new String(req, "UTF-8");
+        logger.info("收到消息：" + msg);
+        dataResolverProxy.doAction( messageString, ctx.channel());
     }
 
     @Override
@@ -56,6 +60,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
         connectionPool.removeChannel(ctx.channel());
         ctx.close();
+        cause.printStackTrace();
         logger.error(cause.getMessage());
     }
 }
