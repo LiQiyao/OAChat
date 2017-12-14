@@ -51,7 +51,6 @@ public class UserInfoController {
     @RequestMapping(value = "allInformation", method = RequestMethod.GET)
     @ResponseBody
     public MessageDTO getAllInformation(Long selfId, String token){
-        System.out.println("!!!" + selfId + token);
         return userInfoService.getAllInformation(selfId);
     }
 

@@ -18,5 +18,7 @@ public interface IChatLogService {
 
     Map<Long, ChatLogListDTO> getChatLogMap(Long userId);
 
-    MessageDTO updateReadStatus(Long userId);
+    MessageDTO updateReadStatus(Long selfId, Long friendId);
+
+    MessageDTO updateReceiveStatus(Long selfId, Long friendId);
 }

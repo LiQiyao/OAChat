@@ -62,10 +62,20 @@ public class ChatLogServiceImpl implements IChatLogService {
     }
 
     @Override
-    public MessageDTO updateReadStatus(Long userId) {
-        chatLogMapper.updateReadStatusByReceiverId(userId);
+    public MessageDTO updateReadStatus(Long selfId, Long friendId) {
+        chatLogMapper.updateReadStatus(friendId, selfId);
         return GenericBuilder.of(MessageDTO::new)
                 .with(MessageDTO::setStatus, Const.Status.SUCCESS)
                 .build();
     }
+
+    @Override
+    public MessageDTO updateReceiveStatus(Long selfId, Long friendId) {
+        chatLogMapper.updateReceiveStatus(friendId, selfId);
+        return GenericBuilder.of(MessageDTO::new)
+                .with(MessageDTO::setStatus, Const.Status.SUCCESS)
+                .build();
+    }
+
+
 }

@@ -22,5 +22,7 @@ public interface ChatLogMapper {
 
     int countUnReadBySelfIdAndFriendId(@Param("selfId") Long selfId, @Param("friendId") Long friendId);
 
-    int updateReadStatusByReceiverId(Long receiverId);
+    int updateReadStatus(@Param("senderId") Long senderId,@Param("receiverId") Long receiverId);
+
+    int updateReceiveStatus(@Param("senderId") Long senderId,@Param("receiverId") Long receiverId);
 }

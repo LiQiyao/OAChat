@@ -141,7 +141,11 @@
 
   </select>
 
-  <update id="updateReadStatusByReceiverId">
-    update chat_log set already_read = 1 where receiver_id=#{receiverId};
+  <update id="updateReadStatus">
+  update chat_log set already_read = 1 where sender_id=#{senderId} and receiver_id=#{receiverId};
+</update>
+
+  <update id="updateReceiveStatus">
+    update chat_log set already_received = 1 where sender_id=#{senderId} and receiver_id=#{receiverId};
   </update>
 </mapper>
