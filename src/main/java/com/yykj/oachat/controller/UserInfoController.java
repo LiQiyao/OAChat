@@ -60,4 +60,10 @@ public class UserInfoController {
         return userInfoService.getUserDetail(targetId, userId);
     }
 
+    @RequestMapping(value = "logout", method = RequestMethod.GET)
+    @ResponseBody
+    public MessageDTO getDetail(Long userId, String token){
+        return userInfoService.logout(userId, token);
+    }
+
 }

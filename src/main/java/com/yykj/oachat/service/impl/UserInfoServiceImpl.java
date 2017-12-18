@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import com.yykj.oachat.common.Const;
 import com.yykj.oachat.common.GenericBuilder;
 import com.yykj.oachat.common.TokenFactory;
+import com.yykj.oachat.common.TokenPool;
 import com.yykj.oachat.dao.FriendMapper;
 import com.yykj.oachat.dao.UserInfoMapper;
 import com.yykj.oachat.dto.MessageDTO;
@@ -14,6 +15,7 @@ import com.yykj.oachat.dto.data.UserDetailDTO;
 import com.yykj.oachat.entity.UserInfo;
 import com.yykj.oachat.service.IChatLogService;
 import com.yykj.oachat.service.IUserInfoService;
+import com.yykj.oachat.tcpconnection.ConnectionPool;
 import com.yykj.oachat.util.GsonUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +40,9 @@ public class UserInfoServiceImpl implements IUserInfoService {
 
     @Autowired
     private IChatLogService chatLogService;
+
+    @Autowired
+    private ConnectionPool connectionPool;
 
     @Override
     public MessageDTO verify(String username, String password) {
@@ -154,6 +159,15 @@ public class UserInfoServiceImpl implements IUserInfoService {
                 .with(MessageDTO::setStatus, Const.Status.SUCCESS)
                 .with(MessageDTO::setData, foundUsersDTO)
                 .with(MessageDTO::setDataName, "foundUsersDTO")
+                .build();
+    }
+
+    @Override
+    public MessageDTO logout(Long userId, String token) {
+        TokenPool.removeToken(token);
+        connectionPool.removeChannel(userId);
+        return GenericBuilder.of(MessageDTO::new)
+                .with(MessageDTO::setStatus, Const.Status.SUCCESS)
                 .build();
     }
 }

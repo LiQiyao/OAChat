@@ -28,4 +28,6 @@ public interface IUserInfoService {
     UserDetailDTO assembleUserDetail(UserInfo userInfo, Long selfId);
 
     MessageDTO<FoundUsersDTO> findUsersByKey(String key, Long selfId);
+
+    MessageDTO logout(Long userId, String token);
 }
