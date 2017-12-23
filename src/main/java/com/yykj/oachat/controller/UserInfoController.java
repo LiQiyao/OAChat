@@ -62,7 +62,7 @@ public class UserInfoController {
 
     @RequestMapping(value = "logout", method = RequestMethod.GET)
     @ResponseBody
-    public MessageDTO getDetail(Long userId, String token){
+    public MessageDTO logout(Long userId, String token){
         return userInfoService.logout(userId, token);
     }
 

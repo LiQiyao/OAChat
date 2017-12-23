@@ -6,12 +6,11 @@ import com.yykj.oachat.common.GenericBuilder;
 import com.yykj.oachat.common.TokenFactory;
 import com.yykj.oachat.common.TokenPool;
 import com.yykj.oachat.dao.FriendMapper;
+import com.yykj.oachat.dao.FriendRequestMapper;
 import com.yykj.oachat.dao.UserInfoMapper;
 import com.yykj.oachat.dto.MessageDTO;
-import com.yykj.oachat.dto.data.ChatLogListDTO;
-import com.yykj.oachat.dto.data.FoundUsersDTO;
-import com.yykj.oachat.dto.data.LoginResultDTO;
-import com.yykj.oachat.dto.data.UserDetailDTO;
+import com.yykj.oachat.dto.data.*;
+import com.yykj.oachat.entity.FriendRequest;
 import com.yykj.oachat.entity.UserInfo;
 import com.yykj.oachat.service.IChatLogService;
 import com.yykj.oachat.service.IUserInfoService;
@@ -44,6 +43,9 @@ public class UserInfoServiceImpl implements IUserInfoService {
     @Autowired
     private ConnectionPool connectionPool;
 
+    @Autowired
+    private FriendRequestMapper friendRequestMapper;
+
     @Override
     public MessageDTO verify(String username, String password) {
         UserInfo self = userInfoMapper.getByUsernameAndPassword(username, password);
@@ -68,17 +70,37 @@ public class UserInfoServiceImpl implements IUserInfoService {
         List<UserDetailDTO> friendList  = Lists.newArrayList();
         Map<Long, ChatLogListDTO> chatLogMap = chatLogService.getChatLogMap(selfId);
         ChatLogListDTO chatLogListDTO;
-        for (UserInfo userInfo : rawFriendList){
+        for (UserInfo userInfo : rawFriendList) {
             friendList.add(assembleUserDetail(userInfo, selfId));
             chatLogListDTO = chatLogMap.get(userInfo.getId());
             chatLogListDTO.setFriendUsername(userInfo.getUsername());
             chatLogListDTO.setFriendIcon(userInfo.getIcon());
             chatLogListDTO.setFriendNickName(userInfo.getNickName());
         }
+        List<FriendRequest> friendRequestList = friendRequestMapper.listByToId(selfId);
+        List<AddFriendRequestDTO> addFriendRequestDTOList = Lists.newArrayList();
+        AddFriendRequestDTO addFriendRequestDTO;
+        UserInfo userInfo;
+        for (FriendRequest friendRequest : friendRequestList){
+            userInfo = userInfoMapper.selectByPrimaryKey(friendRequest.getFromUserId());
+            addFriendRequestDTO = GenericBuilder.of(AddFriendRequestDTO::new)
+                    .with(AddFriendRequestDTO::setFromUserId, friendRequest.getFromUserId())
+                    .with(AddFriendRequestDTO::setFromUsername, userInfo.getUsername())
+                    .with(AddFriendRequestDTO::setFromIcon, userInfo.getIcon())
+                    .with(AddFriendRequestDTO::setToUserId, friendRequest.getToUserId())
+                    .with(AddFriendRequestDTO::setSendTime, friendRequest.getSendTime())
+                    .with(AddFriendRequestDTO::setAccepted, friendRequest.getAccepted())
+                    .with(AddFriendRequestDTO::setFromNickName, userInfo.getNickName())
+                    .with(AddFriendRequestDTO::setFromGender, userInfo.getGender())
+                    .build();
+            addFriendRequestDTOList.add(addFriendRequestDTO);
+        }
+        System.out.println(addFriendRequestDTOList);
         LoginResultDTO loginResultDTO = GenericBuilder.of(LoginResultDTO::new)
                 .with(LoginResultDTO::setSelf, self)
                 .with(LoginResultDTO::setFriendList, friendList)
                 .with(LoginResultDTO::setChatLogMap, chatLogMap)
+                .with(LoginResultDTO::setAddFriendRequestList, addFriendRequestDTOList)
                 .build();
         return GenericBuilder.of(MessageDTO<LoginResultDTO>::new)
                 .with(MessageDTO::setStatus, Const.Status.SUCCESS)

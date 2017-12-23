@@ -96,7 +96,7 @@
   <select id="listByToId" resultType="com.yykj.oachat.entity.FriendRequest">
     select
      <include refid="Base_Column_List"/>
-     from friend_request where to_id=#{toId};
+     from friend_request where to_user_id=#{toId};
   </select>
   
   <update id="updateAcceptedByFromIdAndToId">

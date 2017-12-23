@@ -15,12 +15,12 @@
     <param-value>classpath*:spring/spring-service.xml</param-value>
   </context-param>
 
-  <!-- 定义Listener Application Context -->
+  <!-- 定义Listener com.yykj.springstudy.bug.Application Context -->
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
 
-  <!--Web Application Context-->
+  <!--Web com.yykj.springstudy.bug.Application Context-->
   <servlet>
     <servlet-name>DispatcherServlet</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
