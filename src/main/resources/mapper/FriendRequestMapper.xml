@@ -100,6 +100,6 @@
   </select>
   
   <update id="updateAcceptedByFromIdAndToId">
-    update friend_request set accepted = 1 where from_id=#{fromId} and to_id=#{toId};
+    update friend_request set accepted = 1 where from_user_id=#{fromId} and to_user_id=#{toId};
   </update>
 </mapper>

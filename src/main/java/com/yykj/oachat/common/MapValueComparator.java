@@ -24,6 +24,7 @@ public class MapValueComparator implements Comparator<Long> {
             return 0;
         }
         if (base.get(o1).getLastChatLogTime() > base.get(o2).getLastChatLogTime()){
+            System.out.println(o1 +" " + o2);
             return -1;
         } else {
             return 1;

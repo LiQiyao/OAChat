@@ -73,9 +73,11 @@ public class UserInfoServiceImpl implements IUserInfoService {
         for (UserInfo userInfo : rawFriendList) {
             friendList.add(assembleUserDetail(userInfo, selfId));
             chatLogListDTO = chatLogMap.get(userInfo.getId());
-            chatLogListDTO.setFriendUsername(userInfo.getUsername());
-            chatLogListDTO.setFriendIcon(userInfo.getIcon());
-            chatLogListDTO.setFriendNickName(userInfo.getNickName());
+            if (chatLogListDTO != null){
+                chatLogListDTO.setFriendUsername(userInfo.getUsername());
+                chatLogListDTO.setFriendIcon(userInfo.getIcon());
+                chatLogListDTO.setFriendNickName(userInfo.getNickName());
+            }
         }
         List<FriendRequest> friendRequestList = friendRequestMapper.listByToId(selfId);
         List<AddFriendRequestDTO> addFriendRequestDTOList = Lists.newArrayList();

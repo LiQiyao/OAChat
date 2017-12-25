@@ -39,13 +39,22 @@ public class ChatLogServiceImpl implements IChatLogService {
     @Override
     public ChatLogListDTO assembleChatLogListDTO(Long selfId, Long friendId) {
         List<ChatLog> chatLogs = chatLogMapper.listBySelfIdAndFriendId(selfId, friendId);
+        if (chatLogs.size() == 0){
+            return null;
+        }
         int unReadChatLogCount = chatLogMapper.countUnReadBySelfIdAndFriendId(selfId, friendId);
-        return GenericBuilder.of(ChatLogListDTO::new)
+        ChatLogListDTO chatLogListDTO = GenericBuilder.of(ChatLogListDTO::new)
                 .with(ChatLogListDTO::setFriendId, friendId)
                 .with(ChatLogListDTO::setChatLogs, chatLogs)
                 .with(ChatLogListDTO::setLastChatLogTime, chatLogs.get(chatLogs.size() - 1).getSendTime())
                 .with(ChatLogListDTO::setRead, unReadChatLogCount > 0)
                 .with(ChatLogListDTO::setUnReadChatLogCount, unReadChatLogCount).build();
+        /*if (chatLogs.size() > 0){
+            chatLogListDTO.setLastChatLogTime(chatLogs.get(chatLogs.size() - 1).getSendTime());
+        } else {
+            chatLogListDTO.setLastChatLogTime(0L);
+        }*/
+        return chatLogListDTO;
     }
 
     @Override
@@ -53,12 +62,15 @@ public class ChatLogServiceImpl implements IChatLogService {
         List<Long> allFriendIds = friendMapper.listFriendIdUserId(userId);
         Map<Long, ChatLogListDTO> base = new HashMap<>(16);
         for (Long friendId : allFriendIds){
-            base.put(friendId, assembleChatLogListDTO(userId, friendId));
+            ChatLogListDTO chatLogListDTO = assembleChatLogListDTO(userId, friendId);
+            if (chatLogListDTO != null) {
+                base.put(friendId, chatLogListDTO);
+            }
         }
         System.out.println(GsonUtil.getInstance().toJson(base));
         Map<Long, ChatLogListDTO> chatLogMap = new TreeMap<>(new MapValueComparator(base));
         chatLogMap.putAll(base);
-        return chatLogMap;
+        return base;
     }
 
     @Override
