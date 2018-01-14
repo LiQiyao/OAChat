@@ -89,5 +89,13 @@ public class ChatLogServiceImpl implements IChatLogService {
                 .build();
     }
 
+    @Override
+    public MessageDTO<ChatLogListDTO> getFriendChatLogListDTO(Long selfId, Long friendId) {
+        return GenericBuilder.of(MessageDTO<ChatLogListDTO>::new)
+                .with(MessageDTO::setStatus, Const.Status.SUCCESS)
+                .with(MessageDTO::setData, assembleChatLogListDTO(selfId, friendId))
+                .build();
+    }
+
 
 }

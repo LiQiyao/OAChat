@@ -34,6 +34,9 @@ public class AddFriendRequestDTOResolver implements DataResolver {
         Type objectType = new TypeToken<MessageDTO<AddFriendRequestDTO>>(){}.getType();
         MessageDTO<AddFriendRequestDTO> message = GsonUtil.getInstance().fromJson(jsonMessage, objectType);
         AddFriendRequestDTO addFriendRequestDTO = message.getData();
+        if (friendRequestService.checkExistence(addFriendRequestDTO.getFromUserId(), addFriendRequestDTO.getToUserId())){
+            return;
+        }
         addFriendRequestDTO.setSendTime(System.currentTimeMillis());
         friendRequestService.saveAddFriendRequest(addFriendRequestDTO);
         Channel targetChannel = connectionPool.getChannel(addFriendRequestDTO.getToUserId());

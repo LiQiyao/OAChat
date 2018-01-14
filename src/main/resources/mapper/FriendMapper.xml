@@ -94,4 +94,10 @@
      where (user1_id=#{selfId} and user2_id=#{userId})
      or (user1_id=#{userId} and user2_id=#{selfId})
   </select>
+
+  <delete id="deleteFriend">
+    DELETE FROM friend
+    where (user1_id=#{selfId} and user2_id=#{targetId})
+    or (user2_id=#{selfId} and user1_id=#{targetId})
+  </delete>
 </mapper>

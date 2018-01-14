@@ -21,4 +21,6 @@ public interface FriendMapper {
     List<Long> listFriendIdUserId(Long userId);
 
     int checkRelationship(@Param("selfId") Long selfId, @Param("userId") Long userId);
+
+    int deleteFriend(@Param("selfId") Long selfId, @Param("targetId") Long targetId);
 }

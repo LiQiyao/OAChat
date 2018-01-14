@@ -102,4 +102,16 @@
   <update id="updateAcceptedByFromIdAndToId">
     update friend_request set accepted = 1 where from_user_id=#{fromId} and to_user_id=#{toId};
   </update>
+
+  <select id="selectByFromUserIdAndToUserId" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from friend_request where from_user_id=#{fromUserId} and to_user_id=#{toUserId}
+  </select>
+
+  <delete id="deleteByFromUserIdAndToUserId">
+    DELETE FROM friend_request
+    where (from_user_id=#{fromUserId} and to_user_id=#{toUserId})
+    or (from_user_id=#{toUserId} and to_user_id=#{fromUserId})
+  </delete>
 </mapper>

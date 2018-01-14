@@ -37,7 +37,23 @@ public class FriendServiceImpl implements IFriendService {
     }
 
     @Override
+    @Transactional
     public boolean deleteFriend(Long targetId, Long selfId) {
+        int res1 = friendMapper.deleteFriend(selfId, targetId);
+        int res2 = friendRequestMapper.deleteByFromUserIdAndToUserId(selfId, targetId);
+        if (res1 > 0 && res2 > 0){
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean checkFriendShipExistence(Long user1Id, Long user2Id) {
+        int res1 = friendMapper.checkRelationship(user1Id, user2Id);
+        int res2 = friendMapper.checkRelationship(user2Id, user1Id);
+        if (res1 + res2 >= 1){
+            return true;
+        }
         return false;
     }
 }

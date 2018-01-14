@@ -14,4 +14,6 @@ public interface IFriendRequestService {
     boolean saveAddFriendRequest(AddFriendRequestDTO addFriendRequestDTO);
 
     List<AddFriendRequestDTO> listFriendRequest(Long userId);
+
+    boolean checkExistence(Long fromUserId, Long toUserId);
 }

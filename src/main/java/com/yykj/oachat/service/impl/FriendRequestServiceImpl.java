@@ -60,4 +60,14 @@ public class FriendRequestServiceImpl implements IFriendRequestService {
         }
         return friendRequestList;
     }
+
+    @Override
+    public boolean checkExistence(Long fromUserId, Long toUserId) {
+        FriendRequest friendRequest = friendRequestMapper.selectByFromUserIdAndToUserId(fromUserId, toUserId);
+        if (friendRequest == null) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 }

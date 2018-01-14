@@ -21,4 +21,8 @@ public interface FriendRequestMapper {
     List<FriendRequest> listByToId(Long toId);
 
     int updateAcceptedByFromIdAndToId(@Param("fromId") Long fromId, @Param("toId") Long toId);
+
+    FriendRequest selectByFromUserIdAndToUserId(@Param("fromUserId") Long fromUserId, @Param("toUserId") Long toUserId);
+
+    int deleteByFromUserIdAndToUserId(@Param("fromUserId") Long fromUserId, @Param("toUserId") Long toUserId);
 }

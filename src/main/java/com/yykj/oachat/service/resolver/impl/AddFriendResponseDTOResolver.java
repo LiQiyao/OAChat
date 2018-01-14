@@ -53,6 +53,9 @@ public class AddFriendResponseDTOResolver implements DataResolver{
         Long fromUserId = addFriendResponseDTO.getFromUserId();
 
         friendRequestMapper.updateAcceptedByFromIdAndToId(fromUserId, toUserId);
+        if (friendService.checkFriendShipExistence(fromUserId, toUserId)){
+            return;
+        }
         friendService.addFriendRelationship(addFriendResponseDTO.getFromUserId(), addFriendResponseDTO.getToUserId());
 
         UserDetailDTO fromUserDetail = userInfoService.getUserDetail(fromUserId, toUserId).getData();

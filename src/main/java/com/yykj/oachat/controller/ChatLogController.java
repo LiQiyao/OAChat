@@ -31,4 +31,10 @@ public class ChatLogController {
     public MessageDTO download(String token, Long selfId, Long friendId){
         return chatLogService.updateReceiveStatus(selfId, friendId);
     }
+
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    @ResponseBody
+    public MessageDTO getChatLogList(String token, Long selfId, Long friendId){
+        return chatLogService.getFriendChatLogListDTO(selfId, friendId);
+    }
 }

@@ -15,4 +15,6 @@ public interface IFriendService {
     boolean addFriendRelationship(Long fromId, Long toId);
 
     boolean deleteFriend(Long targetId, Long selfId);
+
+    boolean checkFriendShipExistence(Long user1Id, Long user2Id);
 }
