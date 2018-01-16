@@ -67,7 +67,6 @@ public class ChatLogServiceImpl implements IChatLogService {
                 base.put(friendId, chatLogListDTO);
             }
         }
-        System.out.println(GsonUtil.getInstance().toJson(base));
         Map<Long, ChatLogListDTO> chatLogMap = new TreeMap<>(new MapValueComparator(base));
         chatLogMap.putAll(base);
         return base;

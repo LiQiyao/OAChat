@@ -95,4 +95,18 @@ public class UserInfo {
     public void setIcon(String icon) {
         this.icon = icon == null ? null : icon.trim();
     }
+
+    @Override
+    public String toString() {
+        return "UserInfo{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", nickName='" + nickName + '\'' +
+                ", gender='" + gender + '\'' +
+                ", address='" + address + '\'' +
+                ", telephoneNumber='" + telephoneNumber + '\'' +
+                ", icon='" + icon + '\'' +
+                '}';
+    }
 }

@@ -37,8 +37,10 @@ public class UserInfoController {
 
     @RequestMapping(value = "update", method = RequestMethod.POST)
     @ResponseBody
-    public MessageDTO update(UserInfo userInfo, String token, Long userId){
-        userInfo.setId(userId);
+    public MessageDTO update(UserInfo userInfo, String token){
+
+        //userInfo.setId(userId);
+        System.out.println(userInfo + "!!");
         return userInfoService.update(userInfo);
     }
 

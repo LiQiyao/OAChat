@@ -1,6 +1,7 @@
 package com.yykj.oachat.tcpconnection;
 
 import com.yykj.oachat.service.resolver.DataResolverProxy;
+import com.yykj.oachat.util.SecurityUtil;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
@@ -45,10 +46,11 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
         byteBuf.readBytes(req);
 
         //req = Base64.decodeBase64(req);
-
         String messageString = new String(req, "UTF-8");
-        logger.info("收到消息：" + msg);
-        dataResolverProxy.doAction( messageString, ctx.channel());
+        logger.info("收到加密的消息：" + messageString);
+        String decodedMessage = SecurityUtil.decode(messageString);
+        logger.info("解密的消息：" + messageString);
+        dataResolverProxy.doAction(decodedMessage, ctx.channel());
     }
 
     @Override

@@ -7,6 +7,7 @@ import com.yykj.oachat.service.IFriendRequestService;
 import com.yykj.oachat.service.resolver.DataResolver;
 import com.yykj.oachat.tcpconnection.ConnectionPool;
 import com.yykj.oachat.util.GsonUtil;
+import com.yykj.oachat.util.SecurityUtil;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.Channel;
 import io.netty.util.CharsetUtil;
@@ -41,7 +42,7 @@ public class AddFriendRequestDTOResolver implements DataResolver {
         friendRequestService.saveAddFriendRequest(addFriendRequestDTO);
         Channel targetChannel = connectionPool.getChannel(addFriendRequestDTO.getToUserId());
         if (targetChannel != null){
-            targetChannel.writeAndFlush(Unpooled.copiedBuffer(GsonUtil.getInstance().toJson(message), CharsetUtil.UTF_8));
+            targetChannel.writeAndFlush(Unpooled.copiedBuffer(SecurityUtil.encode(GsonUtil.getInstance().toJson(message)), CharsetUtil.UTF_8));
         }
     }
 }

@@ -59,7 +59,6 @@ public class UserInfoServiceImpl implements IUserInfoService {
                 .with(MessageDTO::setToken, TokenFactory.generate())
                 .with(MessageDTO::setUserId, self.getId())
                 .build();
-        System.out.println(GsonUtil.getInstance().toJson(messageDTO));
         return messageDTO;
     }
 
@@ -97,7 +96,6 @@ public class UserInfoServiceImpl implements IUserInfoService {
                     .build();
             addFriendRequestDTOList.add(addFriendRequestDTO);
         }
-        System.out.println(addFriendRequestDTOList);
         LoginResultDTO loginResultDTO = GenericBuilder.of(LoginResultDTO::new)
                 .with(LoginResultDTO::setSelf, self)
                 .with(LoginResultDTO::setFriendList, friendList)

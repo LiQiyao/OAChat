@@ -11,6 +11,7 @@ import com.yykj.oachat.service.IUserInfoService;
 import com.yykj.oachat.service.resolver.DataResolver;
 import com.yykj.oachat.tcpconnection.ConnectionPool;
 import com.yykj.oachat.util.GsonUtil;
+import com.yykj.oachat.util.SecurityUtil;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.Channel;
 import io.netty.util.CharsetUtil;
@@ -48,14 +49,14 @@ public class OnlineDTOResolver implements DataResolver {
             logger.info("id为" + message.getUserId() + "上线");
             //String sentMsgJson = GsonUtil.getInstance().toJson(userInfoService.getAllInformation(message.getUserId()));
             message.setStatus(Const.Status.SUCCESS);
-            String sentMsgJson = GsonUtil.getInstance().toJson(message);
+            String sentMsgJson = SecurityUtil.encode(GsonUtil.getInstance().toJson(message));
             logger.info("sentMessage" + sentMsgJson);
             channel.writeAndFlush(
                     Unpooled.copiedBuffer(sentMsgJson, CharsetUtil.UTF_8)
             );
         } else {
             message.setStatus(Const.Status.FAILED);
-            channel.writeAndFlush(Unpooled.copiedBuffer(GsonUtil.getInstance().toJson(message), CharsetUtil.UTF_8));
+            channel.writeAndFlush(Unpooled.copiedBuffer(SecurityUtil.encode(GsonUtil.getInstance().toJson(message)), CharsetUtil.UTF_8));
             logger.info("id为" + message.getUserId() + "上线失败！");
             channel.close();
         }

@@ -14,6 +14,7 @@ import com.yykj.oachat.service.IUserInfoService;
 import com.yykj.oachat.service.resolver.DataResolver;
 import com.yykj.oachat.tcpconnection.ConnectionPool;
 import com.yykj.oachat.util.GsonUtil;
+import com.yykj.oachat.util.SecurityUtil;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.Channel;
 import io.netty.util.CharsetUtil;
@@ -79,10 +80,10 @@ public class AddFriendResponseDTOResolver implements DataResolver{
 
 
         if (toUserChannel != null){
-            toUserChannel.writeAndFlush(Unpooled.copiedBuffer(GsonUtil.getInstance().toJson(toUserMessage), CharsetUtil.UTF_8));
+            toUserChannel.writeAndFlush(Unpooled.copiedBuffer(SecurityUtil.encode(GsonUtil.getInstance().toJson(toUserMessage)), CharsetUtil.UTF_8));
         }
         if (fromUserChannel != null){
-            fromUserChannel.writeAndFlush(Unpooled.copiedBuffer(GsonUtil.getInstance().toJson(fromUserMessage), CharsetUtil.UTF_8));
+            fromUserChannel.writeAndFlush(Unpooled.copiedBuffer(SecurityUtil.encode(GsonUtil.getInstance().toJson(fromUserMessage)), CharsetUtil.UTF_8));
         }
     }
 }

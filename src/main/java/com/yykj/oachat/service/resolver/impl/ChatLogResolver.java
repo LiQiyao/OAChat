@@ -9,6 +9,7 @@ import com.yykj.oachat.service.IChatLogService;
 import com.yykj.oachat.service.resolver.DataResolver;
 import com.yykj.oachat.tcpconnection.ConnectionPool;
 import com.yykj.oachat.util.GsonUtil;
+import com.yykj.oachat.util.SecurityUtil;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.Channel;
 import io.netty.util.CharsetUtil;
@@ -40,7 +41,7 @@ public class ChatLogResolver implements DataResolver {
         chatLogMapper.insertSelective(chatLog);
         Channel targetChannel = connectionPool.getChannel(chatLog.getReceiverId());
         if (targetChannel != null){
-            targetChannel.writeAndFlush(Unpooled.copiedBuffer(GsonUtil.getInstance().toJson(message), CharsetUtil.UTF_8));
+            targetChannel.writeAndFlush(Unpooled.copiedBuffer(SecurityUtil.encode(GsonUtil.getInstance().toJson(message)), CharsetUtil.UTF_8));
         }
     }
 }

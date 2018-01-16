@@ -10,6 +10,7 @@ import com.yykj.oachat.service.IFriendService;
 import com.yykj.oachat.service.resolver.DataResolver;
 import com.yykj.oachat.tcpconnection.ConnectionPool;
 import com.yykj.oachat.util.GsonUtil;
+import com.yykj.oachat.util.SecurityUtil;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.Channel;
 import io.netty.util.CharsetUtil;
@@ -57,7 +58,7 @@ public class DeleteFriendRequestDTOResolver implements DataResolver {
         Channel selfChannel = connectionPool.getChannel(selfId);
         if (selfChannel != null){
             logger.info("1发出deleteFriendSuccess" + selfId);
-            selfChannel.writeAndFlush(Unpooled.copiedBuffer(GsonUtil.getInstance().toJson(messageToSelf), CharsetUtil.UTF_8));
+            selfChannel.writeAndFlush(Unpooled.copiedBuffer(SecurityUtil.encode(GsonUtil.getInstance().toJson(messageToSelf)), CharsetUtil.UTF_8));
             logger.info("1after发出deleteFriendSuccess" + selfId);
         }
 
@@ -72,7 +73,7 @@ public class DeleteFriendRequestDTOResolver implements DataResolver {
         Channel friendChannel = connectionPool.getChannel(friendId);
         if (friendChannel != null){
             logger.info("2发出deleteFriendSuccess" + friendId);
-            friendChannel.writeAndFlush(Unpooled.copiedBuffer(GsonUtil.getInstance().toJson(messageToFriend), CharsetUtil.UTF_8));
+            friendChannel.writeAndFlush(Unpooled.copiedBuffer(SecurityUtil.encode(GsonUtil.getInstance().toJson(messageToFriend)), CharsetUtil.UTF_8));
             logger.info("2after发出deleteFriendSuccess" + selfId);
         }
 

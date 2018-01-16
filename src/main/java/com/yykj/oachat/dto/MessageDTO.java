@@ -6,6 +6,8 @@ package com.yykj.oachat.dto;
  */
 public class MessageDTO<T> {
 
+    private String version;
+
     /**
     * data的类名，首字母小写 "loginResult"
     */
@@ -36,6 +38,13 @@ public class MessageDTO<T> {
     public MessageDTO() {
     }
 
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
 
     public String getDataName() {
         return dataName;

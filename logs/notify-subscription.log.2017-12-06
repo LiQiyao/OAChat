@@ -1,0 +1,164 @@
+2017-12-06 20:39:16,942 - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2017-12-06 20:39:17,023 - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@1bce4f0a, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@5e3a8624, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@5c3bd550, org.springframework.test.context.support.DirtiesContextTestExecutionListener@91161c7, org.springframework.test.context.transaction.TransactionalTestExecutionListener@604ed9f0, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@6a4f787b]
+2017-12-06 20:39:17,512 - Loading XML bean definitions from class path resource [spring/spring-service.xml]
+2017-12-06 20:39:17,987 - Loading XML bean definitions from class path resource [spring/spring-dao.xml]
+2017-12-06 20:39:18,103 - Refreshing org.springframework.context.support.GenericApplicationContext@5abca1e0: startup date [Wed Dec 06 20:39:18 CST 2017]; root of context hierarchy
+2017-12-06 20:39:20,069 - TCP服务器初始化===========1
+2017-12-06 20:39:20,639 - TCP服务器初始化===========2
+2017-12-06 20:39:21,259 - {dataSource-1} inited
+2017-12-06 20:39:21,780 - Closing org.springframework.context.support.GenericApplicationContext@5abca1e0: startup date [Wed Dec 06 20:39:18 CST 2017]; root of context hierarchy
+2017-12-06 20:39:21,787 - {dataSource-1} closed
+2017-12-06 20:39:40,061 - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2017-12-06 20:39:40,088 - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@1bce4f0a, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@5e3a8624, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@5c3bd550, org.springframework.test.context.support.DirtiesContextTestExecutionListener@91161c7, org.springframework.test.context.transaction.TransactionalTestExecutionListener@604ed9f0, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@6a4f787b]
+2017-12-06 20:39:40,184 - Loading XML bean definitions from class path resource [spring/spring-service.xml]
+2017-12-06 20:39:40,688 - Loading XML bean definitions from class path resource [spring/spring-dao.xml]
+2017-12-06 20:39:40,965 - Refreshing org.springframework.context.support.GenericApplicationContext@5abca1e0: startup date [Wed Dec 06 20:39:40 CST 2017]; root of context hierarchy
+2017-12-06 20:39:43,440 - TCP服务器初始化===========1
+2017-12-06 20:39:43,851 - TCP服务器初始化===========2
+2017-12-06 20:39:44,231 - {dataSource-1} inited
+2017-12-06 20:39:44,530 - Closing org.springframework.context.support.GenericApplicationContext@5abca1e0: startup date [Wed Dec 06 20:39:40 CST 2017]; root of context hierarchy
+2017-12-06 20:39:44,552 - {dataSource-1} closed
+2017-12-06 20:40:51,570 - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2017-12-06 20:40:51,602 - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@1bce4f0a, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@5e3a8624, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@5c3bd550, org.springframework.test.context.support.DirtiesContextTestExecutionListener@91161c7, org.springframework.test.context.transaction.TransactionalTestExecutionListener@604ed9f0, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@6a4f787b]
+2017-12-06 20:40:51,726 - Loading XML bean definitions from class path resource [spring/spring-service.xml]
+2017-12-06 20:40:52,014 - Loading XML bean definitions from class path resource [spring/spring-dao.xml]
+2017-12-06 20:40:52,197 - Refreshing org.springframework.context.support.GenericApplicationContext@5abca1e0: startup date [Wed Dec 06 20:40:52 CST 2017]; root of context hierarchy
+2017-12-06 20:40:54,555 - TCP服务器初始化===========1
+2017-12-06 20:40:54,943 - TCP服务器初始化===========2
+2017-12-06 20:40:55,195 - {dataSource-1} inited
+2017-12-06 20:40:55,425 - TCP服务器初始化===========3
+2017-12-06 20:40:55,566 - Closing org.springframework.context.support.GenericApplicationContext@5abca1e0: startup date [Wed Dec 06 20:40:52 CST 2017]; root of context hierarchy
+2017-12-06 20:40:55,572 - TCP服务器初始化===========4
+2017-12-06 20:40:55,602 - {dataSource-1} closed
+2017-12-06 20:41:37,140 - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2017-12-06 20:41:37,163 - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@1bce4f0a, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@5e3a8624, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@5c3bd550, org.springframework.test.context.support.DirtiesContextTestExecutionListener@91161c7, org.springframework.test.context.transaction.TransactionalTestExecutionListener@604ed9f0, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@6a4f787b]
+2017-12-06 20:41:37,258 - Loading XML bean definitions from class path resource [spring/spring-service.xml]
+2017-12-06 20:41:37,654 - Loading XML bean definitions from class path resource [spring/spring-dao.xml]
+2017-12-06 20:41:38,040 - Refreshing org.springframework.context.support.GenericApplicationContext@5abca1e0: startup date [Wed Dec 06 20:41:38 CST 2017]; root of context hierarchy
+2017-12-06 20:41:40,281 - TCP服务器初始化===========1
+2017-12-06 20:41:40,582 - TCP服务器初始化===========2
+2017-12-06 20:41:40,991 - {dataSource-1} inited
+2017-12-06 20:41:41,220 - TCP服务器初始化===========3
+2017-12-06 20:41:41,480 - Closing org.springframework.context.support.GenericApplicationContext@5abca1e0: startup date [Wed Dec 06 20:41:38 CST 2017]; root of context hierarchy
+2017-12-06 20:41:41,482 - TCP服务器初始化===========4
+2017-12-06 20:41:41,497 - {dataSource-1} closed
+2017-12-06 20:43:19,994 - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2017-12-06 20:43:20,016 - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@1bce4f0a, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@5e3a8624, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@5c3bd550, org.springframework.test.context.support.DirtiesContextTestExecutionListener@91161c7, org.springframework.test.context.transaction.TransactionalTestExecutionListener@604ed9f0, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@6a4f787b]
+2017-12-06 20:43:20,136 - Loading XML bean definitions from class path resource [spring/spring-service.xml]
+2017-12-06 20:43:20,508 - Loading XML bean definitions from class path resource [spring/spring-dao.xml]
+2017-12-06 20:43:20,857 - Refreshing org.springframework.context.support.GenericApplicationContext@5abca1e0: startup date [Wed Dec 06 20:43:20 CST 2017]; root of context hierarchy
+2017-12-06 20:43:23,004 - TCP服务器初始化===========1
+2017-12-06 20:43:23,342 - TCP服务器初始化===========2
+2017-12-06 20:43:23,744 - {dataSource-1} inited
+2017-12-06 20:43:24,111 - TCP服务器初始化===========3
+2017-12-06 20:43:24,191 - Closing org.springframework.context.support.GenericApplicationContext@5abca1e0: startup date [Wed Dec 06 20:43:20 CST 2017]; root of context hierarchy
+2017-12-06 20:43:24,194 - TCP服务器初始化===========4
+2017-12-06 20:43:24,207 - {dataSource-1} closed
+2017-12-06 20:44:48,037 - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2017-12-06 20:44:48,062 - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@1bce4f0a, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@5e3a8624, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@5c3bd550, org.springframework.test.context.support.DirtiesContextTestExecutionListener@91161c7, org.springframework.test.context.transaction.TransactionalTestExecutionListener@604ed9f0, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@6a4f787b]
+2017-12-06 20:44:48,163 - Loading XML bean definitions from class path resource [spring/spring-service.xml]
+2017-12-06 20:44:48,495 - Loading XML bean definitions from class path resource [spring/spring-dao.xml]
+2017-12-06 20:44:48,732 - Refreshing org.springframework.context.support.GenericApplicationContext@5abca1e0: startup date [Wed Dec 06 20:44:48 CST 2017]; root of context hierarchy
+2017-12-06 20:44:51,142 - TCP服务器初始化===========1
+2017-12-06 20:44:51,452 - TCP服务器初始化===========2
+2017-12-06 20:44:51,830 - {dataSource-1} inited
+2017-12-06 20:44:52,051 - TCP服务器初始化===========3
+2017-12-06 20:44:52,164 - Closing org.springframework.context.support.GenericApplicationContext@5abca1e0: startup date [Wed Dec 06 20:44:48 CST 2017]; root of context hierarchy
+2017-12-06 20:44:52,166 - TCP服务器初始化===========4
+2017-12-06 20:44:52,176 - {dataSource-1} closed
+2017-12-06 20:48:57,778 - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2017-12-06 20:48:57,804 - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@1bce4f0a, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@5e3a8624, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@5c3bd550, org.springframework.test.context.support.DirtiesContextTestExecutionListener@91161c7, org.springframework.test.context.transaction.TransactionalTestExecutionListener@604ed9f0, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@6a4f787b]
+2017-12-06 20:48:57,893 - Loading XML bean definitions from class path resource [spring/spring-service.xml]
+2017-12-06 20:48:58,196 - Loading XML bean definitions from class path resource [spring/spring-dao.xml]
+2017-12-06 20:48:58,344 - Refreshing org.springframework.context.support.GenericApplicationContext@5abca1e0: startup date [Wed Dec 06 20:48:58 CST 2017]; root of context hierarchy
+2017-12-06 20:49:01,126 - TCP服务器初始化===========1
+2017-12-06 20:49:01,447 - TCP服务器初始化===========2
+2017-12-06 20:49:01,876 - {dataSource-1} inited
+2017-12-06 20:49:02,111 - TCP服务器初始化===========3
+2017-12-06 20:49:02,249 - Closing org.springframework.context.support.GenericApplicationContext@5abca1e0: startup date [Wed Dec 06 20:48:58 CST 2017]; root of context hierarchy
+2017-12-06 20:49:02,251 - TCP服务器初始化===========4
+2017-12-06 20:49:02,262 - {dataSource-1} closed
+2017-12-06 20:49:32,764 - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2017-12-06 20:49:32,794 - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@1bce4f0a, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@5e3a8624, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@5c3bd550, org.springframework.test.context.support.DirtiesContextTestExecutionListener@91161c7, org.springframework.test.context.transaction.TransactionalTestExecutionListener@604ed9f0, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@6a4f787b]
+2017-12-06 20:49:32,899 - Loading XML bean definitions from class path resource [spring/spring-service.xml]
+2017-12-06 20:49:33,267 - Loading XML bean definitions from class path resource [spring/spring-dao.xml]
+2017-12-06 20:49:33,647 - Refreshing org.springframework.context.support.GenericApplicationContext@5abca1e0: startup date [Wed Dec 06 20:49:33 CST 2017]; root of context hierarchy
+2017-12-06 20:49:35,801 - TCP服务器初始化===========1
+2017-12-06 20:49:36,111 - TCP服务器初始化===========2
+2017-12-06 20:49:36,504 - {dataSource-1} inited
+2017-12-06 20:49:36,921 - TCP服务器初始化===========3
+2017-12-06 20:49:36,936 - Closing org.springframework.context.support.GenericApplicationContext@5abca1e0: startup date [Wed Dec 06 20:49:33 CST 2017]; root of context hierarchy
+2017-12-06 20:49:36,938 - TCP服务器初始化===========4
+2017-12-06 20:49:36,947 - {dataSource-1} closed
+2017-12-06 20:50:14,586 - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2017-12-06 20:50:14,611 - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@1bce4f0a, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@5e3a8624, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@5c3bd550, org.springframework.test.context.support.DirtiesContextTestExecutionListener@91161c7, org.springframework.test.context.transaction.TransactionalTestExecutionListener@604ed9f0, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@6a4f787b]
+2017-12-06 20:50:14,831 - Loading XML bean definitions from class path resource [spring/spring-service.xml]
+2017-12-06 20:50:15,425 - Loading XML bean definitions from class path resource [spring/spring-dao.xml]
+2017-12-06 20:50:15,650 - Refreshing org.springframework.context.support.GenericApplicationContext@5abca1e0: startup date [Wed Dec 06 20:50:15 CST 2017]; root of context hierarchy
+2017-12-06 20:50:17,500 - TCP服务器初始化===========1
+2017-12-06 20:50:17,810 - TCP服务器初始化===========2
+2017-12-06 20:50:18,285 - {dataSource-1} inited
+2017-12-06 20:50:18,644 - TCP服务器初始化===========3
+2017-12-06 20:50:18,776 - Closing org.springframework.context.support.GenericApplicationContext@5abca1e0: startup date [Wed Dec 06 20:50:15 CST 2017]; root of context hierarchy
+2017-12-06 20:50:18,779 - TCP服务器初始化===========4
+2017-12-06 20:50:18,795 - {dataSource-1} closed
+2017-12-06 20:50:50,142 - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2017-12-06 20:50:50,164 - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@1bce4f0a, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@5e3a8624, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@5c3bd550, org.springframework.test.context.support.DirtiesContextTestExecutionListener@91161c7, org.springframework.test.context.transaction.TransactionalTestExecutionListener@604ed9f0, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@6a4f787b]
+2017-12-06 20:50:50,261 - Loading XML bean definitions from class path resource [spring/spring-service.xml]
+2017-12-06 20:50:50,557 - Loading XML bean definitions from class path resource [spring/spring-dao.xml]
+2017-12-06 20:50:50,741 - Refreshing org.springframework.context.support.GenericApplicationContext@5abca1e0: startup date [Wed Dec 06 20:50:50 CST 2017]; root of context hierarchy
+2017-12-06 20:50:53,232 - TCP服务器初始化===========1
+2017-12-06 20:50:53,565 - TCP服务器初始化===========2
+2017-12-06 20:50:53,894 - {dataSource-1} inited
+2017-12-06 20:50:54,118 - TCP服务器初始化===========3
+2017-12-06 20:50:54,223 - Closing org.springframework.context.support.GenericApplicationContext@5abca1e0: startup date [Wed Dec 06 20:50:50 CST 2017]; root of context hierarchy
+2017-12-06 20:50:54,224 - TCP服务器初始化===========4
+2017-12-06 20:50:54,234 - {dataSource-1} closed
+2017-12-06 20:51:37,752 - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2017-12-06 20:51:37,779 - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@1bce4f0a, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@5e3a8624, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@5c3bd550, org.springframework.test.context.support.DirtiesContextTestExecutionListener@91161c7, org.springframework.test.context.transaction.TransactionalTestExecutionListener@604ed9f0, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@6a4f787b]
+2017-12-06 20:51:37,871 - Loading XML bean definitions from class path resource [spring/spring-service.xml]
+2017-12-06 20:51:38,166 - Loading XML bean definitions from class path resource [spring/spring-dao.xml]
+2017-12-06 20:51:38,285 - Refreshing org.springframework.context.support.GenericApplicationContext@5abca1e0: startup date [Wed Dec 06 20:51:38 CST 2017]; root of context hierarchy
+2017-12-06 20:51:40,722 - TCP服务器初始化===========1
+2017-12-06 20:51:41,044 - TCP服务器初始化===========2
+2017-12-06 20:51:41,434 - {dataSource-1} inited
+2017-12-06 20:51:41,604 - TCP服务器初始化===========3
+2017-12-06 20:51:41,753 - Closing org.springframework.context.support.GenericApplicationContext@5abca1e0: startup date [Wed Dec 06 20:51:38 CST 2017]; root of context hierarchy
+2017-12-06 20:51:41,755 - TCP服务器初始化===========4
+2017-12-06 20:51:41,763 - {dataSource-1} closed
+2017-12-06 20:52:44,021 - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2017-12-06 20:52:44,067 - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@1bce4f0a, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@5e3a8624, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@5c3bd550, org.springframework.test.context.support.DirtiesContextTestExecutionListener@91161c7, org.springframework.test.context.transaction.TransactionalTestExecutionListener@604ed9f0, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@6a4f787b]
+2017-12-06 20:52:44,218 - Loading XML bean definitions from class path resource [spring/spring-service.xml]
+2017-12-06 20:52:44,596 - Loading XML bean definitions from class path resource [spring/spring-dao.xml]
+2017-12-06 20:52:44,708 - Refreshing org.springframework.context.support.GenericApplicationContext@5abca1e0: startup date [Wed Dec 06 20:52:44 CST 2017]; root of context hierarchy
+2017-12-06 20:52:47,600 - TCP服务器初始化===========1
+2017-12-06 20:52:47,953 - TCP服务器初始化===========2
+2017-12-06 20:52:48,368 - {dataSource-1} inited
+2017-12-06 20:52:48,822 - TCP服务器初始化===========3
+2017-12-06 20:52:48,877 - Closing org.springframework.context.support.GenericApplicationContext@5abca1e0: startup date [Wed Dec 06 20:52:44 CST 2017]; root of context hierarchy
+2017-12-06 20:52:48,886 - TCP服务器初始化===========4
+2017-12-06 20:52:48,901 - {dataSource-1} closed
+2017-12-06 20:53:32,694 - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2017-12-06 20:53:32,720 - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@1bce4f0a, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@5e3a8624, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@5c3bd550, org.springframework.test.context.support.DirtiesContextTestExecutionListener@91161c7, org.springframework.test.context.transaction.TransactionalTestExecutionListener@604ed9f0, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@6a4f787b]
+2017-12-06 20:53:32,823 - Loading XML bean definitions from class path resource [spring/spring-service.xml]
+2017-12-06 20:53:33,123 - Loading XML bean definitions from class path resource [spring/spring-dao.xml]
+2017-12-06 20:53:33,335 - Refreshing org.springframework.context.support.GenericApplicationContext@5abca1e0: startup date [Wed Dec 06 20:53:33 CST 2017]; root of context hierarchy
+2017-12-06 20:53:35,904 - TCP服务器初始化===========1
+2017-12-06 20:53:36,282 - TCP服务器初始化===========2
+2017-12-06 20:53:36,656 - {dataSource-1} inited
+2017-12-06 20:53:37,120 - TCP服务器初始化===========3
+2017-12-06 20:53:37,232 - Closing org.springframework.context.support.GenericApplicationContext@5abca1e0: startup date [Wed Dec 06 20:53:33 CST 2017]; root of context hierarchy
+2017-12-06 20:53:37,235 - TCP服务器初始化===========4
+2017-12-06 20:53:37,259 - {dataSource-1} closed
+2017-12-06 20:54:54,881 - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2017-12-06 20:54:54,912 - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@1bce4f0a, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@5e3a8624, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@5c3bd550, org.springframework.test.context.support.DirtiesContextTestExecutionListener@91161c7, org.springframework.test.context.transaction.TransactionalTestExecutionListener@604ed9f0, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@6a4f787b]
+2017-12-06 20:54:54,999 - Loading XML bean definitions from class path resource [spring/spring-service.xml]
+2017-12-06 20:54:55,320 - Loading XML bean definitions from class path resource [spring/spring-dao.xml]
+2017-12-06 20:54:55,505 - Refreshing org.springframework.context.support.GenericApplicationContext@5abca1e0: startup date [Wed Dec 06 20:54:55 CST 2017]; root of context hierarchy
+2017-12-06 20:54:57,950 - TCP服务器初始化===========1
+2017-12-06 20:54:58,276 - TCP服务器初始化===========2
+2017-12-06 20:54:58,633 - {dataSource-1} inited
+2017-12-06 20:54:58,965 - TCP服务器初始化===========3
+2017-12-06 20:54:59,099 - Closing org.springframework.context.support.GenericApplicationContext@5abca1e0: startup date [Wed Dec 06 20:54:55 CST 2017]; root of context hierarchy
+2017-12-06 20:54:59,103 - TCP服务器初始化===========4
+2017-12-06 20:54:59,121 - {dataSource-1} closed
